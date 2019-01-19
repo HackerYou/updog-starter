@@ -24,12 +24,13 @@
   "homepage": "https://github.com/swbloom/updog#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2",
+    "express": "^4.16.4",
     "mongoose": "^4.11.0"
   },
   "devDependencies": {
     "eslint": "^4.0.0-alpha.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0"
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "nodemon": "^1.18.9"
   }
 }

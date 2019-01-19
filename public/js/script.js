@@ -27,6 +27,14 @@ updog.upvote = (id) => {
 	});
 };
 
+updog.deleteDog = (id) => {
+	return $.ajax({
+		url: `/api/pets/${id}`,
+		method: 'DELETE',
+		dataType: 'json'
+	});
+};
+
 updog.displayDogs = (dogs) => {
 	$('#dogos').empty();
 	dogs.forEach((dog) => {
@@ -37,7 +45,8 @@ updog.displayDogs = (dogs) => {
 		const $scoreContainer = $('<div>').addClass('score-container');
 		const $score = $('<p>').text(dog.score).addClass('score');
 		const $thumb = $('<p>').text('👍').addClass('updog').data('id',dog._id);
-		$scoreContainer.append($score,$thumb);
+		const $delete = $('<button>').text(' 🙅🏻').data('id', dog._id);
+		$scoreContainer.append($score, $thumb, $delete );
 		$container.append($img,$name,$desc,$scoreContainer);
 		$('#dogos').append($container);
 	})
@@ -67,12 +76,22 @@ updog.events = () => {
 			.then(updog.getDogs)
 			.then(updog.displayDogs)
 	});
+
+	$('#dogos').on('click', 'button', function () {
+		const id = $(this).data('id');
+		updog.deleteDog(id)
+			.then(updog.getDogs)
+			.then(updog.displayDogs);
+	});
+
 };
+
 
 updog.init = () => {
 	updog.getDogs()
 		.then(updog.displayDogs);
 	updog.events();
 };
+
 
 $(updog.init);

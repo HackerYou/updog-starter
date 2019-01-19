@@ -36,7 +36,7 @@ const bodyParser = require('body-parser');
 
 // mongoose.connect('mongodb://localhost/updog');
 
-onst dbURL = process.env.MONGODB_URI || 'mongodb://localhost/updog'
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/updog'
 
 mongoose.connect(dbURL);
 

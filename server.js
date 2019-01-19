@@ -34,7 +34,11 @@ const Pet= require('./models/pet.js');
 // to parse POST requests
 const bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/updog');
+// mongoose.connect('mongodb://localhost/updog');
+
+onst dbURL = process.env.MONGODB_URI || 'mongodb://localhost/updog'
+
+mongoose.connect(dbURL);
 
 app.use(express.static('public'));
 
